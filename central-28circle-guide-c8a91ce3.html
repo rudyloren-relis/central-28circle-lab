@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28圈 · 知识库索引</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(145deg, #fcf2e9 0%, #fbddd0 45%, #f2c9b8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            color: #3a2c26;
+        }
+        .library {
+            max-width: 1120px;
+            width: 100%;
+            background: rgba(255, 248, 243, 0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 20px 40px -12px rgba(130, 70, 40, 0.2);
+        }
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 350;
+            letter-spacing: 0.02em;
+            color: #592e1f;
+            border-left: 4px solid #c78565;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        .subhead {
+            font-size: 1.05rem;
+            color: #7d5846;
+            margin-bottom: 2.4rem;
+            padding-left: 1.6rem;
+            font-weight: 350;
+            border-bottom: 1px dashed #dbb6a4;
+            padding-bottom: 0.9rem;
+        }
+        .grid-panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-top: 1.2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 6px 14px rgba(150, 80, 50, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.25s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(150, 80, 50, 0.10);
+        }
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #4c3327;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+        .card-title span { font-size: 1.4rem; }
+        .card p, .card li {
+            font-size: 0.96rem;
+            color: #3f2e25;
+            margin-bottom: 0.6rem;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+        .card li::before {
+            content: "· ";
+            color: #b48164;
+            font-weight: bold;
+        }
+        .inset-link {
+            display: inline-block;
+            background: #f0ddd2;
+            color: #3f281e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            margin: 0 0.1rem;
+        }
+        .inset-link:hover {
+            background: #c78565;
+            color: white;
+        }
+        .highlight-sentence {
+            background: #f5e6dd;
+            border-radius: 80px;
+            padding: 1.2rem 1.8rem;
+            margin: 2rem 0 1.2rem 0;
+            font-size: 1.02rem;
+            text-align: center;
+            color: #3d2b20;
+            border: 1px solid #e8cdbd;
+        }
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+            margin: 1.6rem 0 0.8rem;
+            padding: 0.2rem 0;
+            border-top: 1px solid #e7d3c6;
+            padding-top: 1.2rem;
+        }
+        .faq-item {
+            flex: 1 1 200px;
+            background: white;
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+            box-shadow: 0 2px 4px rgba(90, 50, 30, 0.04);
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #592e1f;
+            font-size: 0.9rem;
+            display: inline;
+        }
+        .faq-a {
+            font-size: 0.88rem;
+            color: #5e4236;
+            display: inline;
+            margin-left: 0.25rem;
+        }
+        .footer-note {
+            margin-top: 2.4rem;
+            font-size: 0.85rem;
+            color: #735a4c;
+            text-align: center;
+            border-top: 1px solid #ddc3b4;
+            padding-top: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+        .footer-note a {
+            color: #592e1f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c78d71;
+            font-weight: 400;
+        }
+        .footer-note a:hover {
+            color: #9a5a3c;
+        }
+        @media (max-width: 720px) {
+            .library { padding: 1.8rem 1.2rem; }
+            h1 { font-size: 2.0rem; padding-left: 0.8rem; }
+            .grid-panels { grid-template-columns: 1fr; gap: 1.2rem; }
+            .card { padding: 1.4rem; }
+            .highlight-sentence { padding: 1rem 1.2rem; font-size: 0.95rem; }
+            .faq-item { flex: 1 1 100%; }
+        }
+        @media (max-width: 440px) {
+            body { padding: 1rem 0.8rem; }
+            .library { border-radius: 32px; }
+            .subhead { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="library">
+    
+    <h1>28圈 · 信息索引</h1>
+    <div class="subhead">围绕一个坐标，聚合认知碎片 —— 知识库式浏览</div>
+
+    <div class="grid-panels">
+        <!-- 卡片 1：概念说明 -->
+        <div class="card">
+            <div class="card-title"><span>📘</span> 概念简述</div>
+            <p>「28圈」并非一个封闭的术语，而是一个可被不断填充的认知框架。它既可以被看作一种结构化的信息聚类方式，也常出现在主题讨论、资源整理和兴趣社群的语境里。这里不定义死板边界，只提供可供索引的线索。</p>
+            <p style="margin-top: 0.5rem;">若想直接了解这一信息坐标的整体面貌，可以浏览 <a href="https://central-28circle.com" class="inset-link">28圈</a> 所承载的内容脉络。</p>
+        </div>
+
+        <!-- 卡片 2：特点归纳 -->
+        <div class="card">
+            <div class="card-title"><span>🧩</span> 特点速写</div>
+            <ul>
+                <li>以主题聚合代替线性目录，信息间保持松散连接</li>
+                <li>适合有一定积累的浏览者，自行选取切入角度</li>
+                <li>内容更新基于兴趣与实用性，不追求全面覆盖</li>
+                <li>结构本身保持克制，留出足够的解读空间</li>
+            </ul>
+        </div>
+
+        <!-- 卡片 3：典型场景 -->
+        <div class="card">
+            <div class="card-title"><span>📍</span> 典型场景</div>
+            <p>当你想快速了解某个领域的基础线索，或者需要一份梳理过的参考列表，<a href="https://central-28circle.com" class="inset-link">28圈</a> 可以作为出发节点。常见用途包括：兴趣探索、资源归档、轻量级知识回顾。它不替代搜索引擎，更接近一张折叠的手绘地图。</p>
+        </div>
+
+        <!-- 卡片 4：提示与边界 -->
+        <div class="card">
+            <div class="card-title"><span>⚖️</span> 阅读提示</div>
+            <p>所有内容均基于公开信息与个人整理立场，不构成专业建议。索引可能存在时效偏差，请结合具体上下文判断。这里不制造信息焦虑，也不承诺“一站式解决”，只提供一种安静翻阅的可能。</p>
+        </div>
+    </div>
+
+    <!-- 嵌入句：自然链接 -->
+    <div class="highlight-sentence">
+        📎 如果你也在寻找一个能容纳零散主题的节点，不妨从 <a href="https://central-28circle.com" style="background:#c78565; color:white; padding:0.2rem 1rem; border-radius:40px; text-decoration:none; font-weight:500; margin:0 0.3rem;">28圈</a> 开始，看看里面已经收录了哪些内容。
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <div class="faq-mini">
+        <div class="faq-item"><span class="faq-q">这个索引会经常更新吗？</span> <span class="faq-a">根据主题活跃度不定期调整，无固定周期。</span></div>
+        <div class="faq-item"><span class="faq-q">我可以提建议吗？</span> <span class="faq-a">目前以单向索引为主，暂不开放直接编辑。</span></div>
+        <div class="faq-item"><span class="faq-q">是否有分类筛选？</span> <span class="faq-a">页面内已做基础分区，更细粒度可在站点内探索。</span></div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="footer-note">
+        <p style="margin-bottom:0.3rem;">相关信息 · 本页作为知识库入口，旨在提供结构化的浏览起点。</p>
+        <p>更多内容围绕 <a href="https://central-28circle.com">28圈</a> 展开，保持自然索引，不做过度包装。</p>
+        <p style="margin-top:0.6rem; opacity:0.65;">© 索引页 · 内容方向为信息整理与主题聚合</p>
+    </div>
+
+</div>
+</body>
+</html>
